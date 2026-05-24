@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная №3 – Отчёт о работе с БД</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .report-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .report-header {
+            background: linear-gradient(135deg, #2d3e50, #1e2a3a);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .report-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .report-header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .step {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 20px;
+        }
+        .step h2 {
+            color: #2d3e50;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .screenshot {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            flex: 1 1 300px;
+        }
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+        }
+        .caption {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #475569;
+            font-style: italic;
+        }
+        code {
+            background: #eef2ff;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        .back-link {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .back-link a {
+            background: #2d3e50;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        footer {
+            background: #f1f5f9;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+        @media (max-width: 640px) {
+            .content { padding: 20px; }
+            .screenshot { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+    <div class="report-header">
+        <h1> Лабораторная работа №3</h1>
+        <p>Работа с базой данных MySQL, валидация форм, Git-репозиторий</p>
+    </div>
+    <div class="content">
+        <!-- Шаг 1: Создание таблиц -->
+        <div class="step">
+            <h2>🔹 1. Создание структуры БД</h2>
+            <p>Спроектированы таблицы в третьей нормальной форме: <code>language</code> (языки программирования), <code>application</code> (анкеты), <code>application_language</code> (связь многие-ко-многим). Скрипт выполнен в MySQL.</p>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <img src="1.png" alt="Вход в MySQL">
+                    <div class="caption">Рис. 1 – Подключение к MySQL через терминал</div>
+                </div>
+            </div>
+             <div class="screenshots">
+                <div class="screenshot">
+                    <img src="2.png" alt="Создание таблиц">
+                    <div class="caption">Рис. 2 – Создание таблиц language, application, application_language</div>
+                </div>
+            </div>
+             <div class="screenshots">
+                <div class="screenshot">
+                    <img src="3.png" alt="Выход из MySQL">
+                    <div class="caption">Рис. 3 – Завершение работы с MySQL (exit)</div>
+                </div>
+            </div>
+            <p>Таблицы соответствуют требованиям: <code>language</code> содержит 12 языков, <code>application</code> – поля анкеты, <code>application_language</code> связывает записи.</p>
+        </div>
+
+        <!-- Шаг 2: Загрузка файлов через Git -->
+        <div class="step">
+            <h2>🔹 2. Размещение кода на сервере через Git</h2>
+            <p>Локальный репозиторий инициализирован, файлы добавлены и запушены на GitHub. На учебном сервере выполнено клонирование.</p>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <img src="4.png" alt="Git push">
+                    <div class="caption">Рис. 4 – Отправка файлов в удалённый репозиторий (git push)</div>
+                </div>
+            </div>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <img src="5.png" alt="Git clone на сервере">
+                    <div class="caption">Рис. 5 – Клонирование репозитория на сервер (git clone)</div>
+                </div>
+            </div>
+            <p>Все файлы проекта (<code>index.php</code>, <code>form.php</code>, <code>v.php</code>, <code>db.php</code>, <code>style.css</code>, <code>p.html</code>) успешно загружены в каталог <code>~/www/rw3/</code>.</p>
+        </div>
+
+        <!-- Шаг 3: Работа формы и сохранение данных -->
+        <div class="step">
+            <h2>🔹 3. Валидация и сохранение анкет</h2>
+            <p>Форма на <code>index.php</code> отправляет POST-запрос на сервер. Выполняется проверка каждого поля (ФИО, телефон, email, дата, пол, языки, биография, согласие). При успехе данные записываются в БД с использованием подготовленных запросов (prepared statements).</p>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <img src="6.png" alt="Данные в таблице application">
+                    <div class="caption">Рис. 6 – Выборка из таблицы application (SELECT *)</div>
+                </div>
+            </div>
+            <p>На скриншоте видно, что несколько анкет успешно сохранены (поля: ФИО, телефон, email, дата рождения, пол, биография, согласие). Языки программирования хранятся в связанной таблице <code>application_language</code>.</p>
+        </div>
+
+        <!-- Шаг 4: Просмотр анкет -->
+        <div class="step">
+            <h2>🔹 4. Страница просмотра сохранённых анкет</h2>
+            <p>Реализована страница <code>v.php</code>, которая выводит все записи из БД с объединением языков через <code>GROUP_CONCAT</code>. Ссылка на неё находится внизу формы.</p>
+        </div>
+
+        <!-- Ссылки -->
+        <div class="back-link">
+            <a href="index.php">← Вернуться к заполнению анкеты</a>
+        </div>
+    </div>
+    <footer>
+        <p>Лабораторная работа №3 </p>
+    </footer>
+</div>
+</body>
+</html>
