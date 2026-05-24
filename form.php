@@ -126,7 +126,7 @@
                 <?php if (isset($errors['languages'])): ?>
                     <div class="error-text"><?= htmlspecialchars($errors['languages']) ?></div>
                 <?php else: ?>
-                    <div class="field-hint">Зажмите Ctrl (Cmd) для выбора нескольких</div>
+                    <div class="field-hint">Зажмите Ctrl  для выбора нескольких</div>
                 <?php endif; ?>
             </div>
 
