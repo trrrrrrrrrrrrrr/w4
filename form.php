@@ -24,8 +24,8 @@
 <div class="form-wrapper">
     <div class="form-card">
         <div class="form-header">
-            <h1>📋 Регистрационная анкета</h1>
-            <p>Заполните все поля – данные будут сохранены в базе и в cookies на год</p>
+            <h1> Регистрационная анкета</h1>
+            
         </div>
 
         <?php if ($success_message): ?>
@@ -156,11 +156,11 @@
                 <?php endif; ?>
             </div>
 
-            <button type="submit" class="submit-btn">💾 Сохранить анкету</button>
+            <button type="submit" class="submit-btn"> Сохранить анкету</button>
         </form>
 
         <div class="footer-links">
-            <a href="v.php">📊 Просмотр сохранённых анкет</a>
+            <a href="v.php"> Просмотр сохранённых анкет</a>
             
         </div>
     </div>
